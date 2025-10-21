@@ -1,4 +1,4 @@
-import * as THREE from 'https://esm.sh/three@0.152.0';
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.152.0/build/three.module.js';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000);
@@ -6,10 +6,10 @@ const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
 
 renderer.setSize(innerWidth, innerHeight);
 renderer.setPixelRatio(devicePixelRatio);
-renderer.domElement.style.display = 'block';      // ← force visible
+renderer.domElement.style.display = 'block';
 
 const galaxy = document.getElementById('galaxy');
-galaxy.style.width = '100vw';                     // ← give it size NOW
+galaxy.style.width = '100vw';
 galaxy.style.height = '100vh';
 galaxy.appendChild(renderer.domElement);
 
@@ -34,6 +34,10 @@ const points = new THREE.Points(geo, mat);
 scene.add(points);
 
 camera.position.z = 50;
+
+// force first draw even if import is slow
+renderer.setClearColor(0x000000, 0);
+renderer.render(scene, camera);
 
 function animate() {
   requestAnimationFrame(animate);
