@@ -1,6 +1,10 @@
 // 1. theme toggle
 const btn = document.createElement('button');
 btn.id = 'theme';
+btn.style.position='fixed';
+btn.style.bottom='2rem';
+btn.style.right='2rem';
+btn.style.zIndex='999';
 btn.textContent = '🌗';
 document.body.appendChild(btn);
 btn.onclick = () => {
