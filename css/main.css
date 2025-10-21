@@ -78,3 +78,13 @@ footer{text-align:center;padding:4rem 0;font-size:.9rem;color:var(--sub)}
 /* ----- HUE ROTATE ----- */
 :root{animation:hueRotate 20s linear infinite}
 @keyframes hueRotate{to{--hue:360}}
+
+/* ---- GALAXY CANVAS ---- */
+#galaxy{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  display:block;
+  width:100vw;
+  height:100vh;
+}
