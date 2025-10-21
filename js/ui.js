@@ -55,10 +55,12 @@ const header = document.createElement('header');
 header.innerHTML = `<h3>Fong Chong Yan</h3>`;
 document.body.prepend(header);
 addEventListener('scroll', () => header.classList.toggle('show', scrollY > 200));
-// reveal on scroll
+
+/* ---- scroll reveal ---- */
 const reveal = new IntersectionObserver((entries) => {
   entries.forEach((e) => {
     if (e.isIntersecting) e.target.classList.add('on');
   });
 }, { threshold: 0.2 });
+
 document.querySelectorAll('.fade-up').forEach((el) => reveal.observe(el));
