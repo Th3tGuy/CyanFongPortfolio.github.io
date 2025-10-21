@@ -1,4 +1,4 @@
-import * as THREE from 'https://cdn.skypack.dev/three@0.152.0';
+import * as THREE from 'https://esm.sh/three@0.152.0';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000);
