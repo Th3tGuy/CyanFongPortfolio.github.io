@@ -1,0 +1,80 @@
+:root{
+  --bg0:#000;
+  --bg1:#0a0a0f;
+  --accent1:hsl(var(--hue,195) 100% 50%);
+  --accent2:#ff0055;
+  --text:#e5e5e5;
+  --sub:#86868b;
+  --max:1100px;
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg0);
+  color:var(--text);
+  overflow-x:hidden;
+  background:radial-gradient(ellipse at bottom, #0a0a0f 0%, #000 100%);
+}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif;letter-spacing:-.02em}
+h1{font-size:clamp(3rem,8vw,6rem);font-weight:900;line-height:1}
+h2{font-size:clamp(2rem,5vw,3.5rem);margin-bottom:1em}
+h3{font-size:1.4rem}
+p{font-size:clamp(1rem,2vw,1.25rem);line-height:1.6;color:var(--sub)}
+a{color:var(--accent1);text-decoration:none}
+section{width:100%;padding:clamp(5rem,15vh,12rem) 0;position:relative}
+.center{max-width:var(--max);margin:0 auto;padding:0 6vw}
+
+/* ----- HERO ----- */
+.hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative}
+#galaxy{position:absolute;inset:0;z-index:-1}
+.glitch{animation:glitch 2.5s infinite;text-shadow:0 0 5px var(--accent1),0 0 15px var(--accent2)}
+@keyframes glitch{20%{text-shadow:-2px 0 var(--accent2),2px 0 var(--accent1)}40%{text-shadow:2px 0 var(--accent2),-2px 0 var(--accent1)}}
+.cta{margin-top:2rem;display:inline-block;padding:.8rem 1.8rem;border:2px solid var(--accent1);border-radius:999px;font-weight:700;transition:.3s}
+.cta:hover{background:var(--accent1);color:#000}
+
+/* ----- IMPACT CARDS ----- */
+.impact-grid{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.impact-card{
+  background:linear-gradient(145deg,#111 0%,#000 100%);
+  border:1px solid #222;border-radius:20px;padding:3rem 2rem;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease);
+  will-change:transform;position:relative;overflow:hidden;
+}
+.impact-card:hover{transform:translateY(-10px);box-shadow:0 0 25px var(--accent1),0 0 50px var(--accent2)}
+.impact-number{font-size:4rem;font-weight:900;background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin-bottom:.5rem}
+.impact-label{font-size:1.1rem;letter-spacing:.05em;text-transform:uppercase;color:var(--sub)}
+
+/* ----- ROLE CARDS ----- */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent1),var(--accent2))}
+.role-card{background:#111;border-left:4px solid var(--accent1);border-radius:12px;padding:2.5rem;margin-bottom:3rem;position:relative;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.role-card:hover{transform:translateX(10px);box-shadow:0 0 20px var(--accent1)}
+.role-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;margin-bottom:1rem}
+.role-title{font-size:1.6rem;font-weight:700}
+.role-date{font-size:1rem;color:var(--accent2)}
+.role-award{display:inline-block;background:var(--accent2);color:#fff;padding:.2rem .8rem;border-radius:999px;font-size:.75rem;margin-top:.5rem}
+.role-desc{margin-top:1rem;font-size:1.1rem}
+.awards-bar{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.5rem}
+.award-tag{background:#222;border:1px solid var(--accent1);color:var(--accent1);padding:.4rem 1rem;border-radius:999px;font-size:.8rem}
+
+/* ----- FOOTER ----- */
+footer{text-align:center;padding:4rem 0;font-size:.9rem;color:var(--sub)}
+
+/* ----- SCROLL FADES ----- */
+.fade-up{opacity:0;transform:translateY(60px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.fade-up.on{opacity:1;transform:none}
+
+/* ----- 3-D TILT & GLOW ----- */
+.impact-card, .role-card{--glow-x:50%; --glow-y:50%}
+.impact-card::before, .role-card::before{
+  content:''; position:absolute; inset:-100%;
+  background:radial-gradient(circle at var(--glow-x) var(--glow-y), var(--accent1) 0%, transparent 30%);
+  opacity:0; transition:opacity .4s; pointer-events:none;
+}
+.impact-card:hover::before, .role-card:hover::before{opacity:.6}
+
+/* ----- HUE ROTATE ----- */
+:root{animation:hueRotate 20s linear infinite}
+@keyframes hueRotate{to{--hue:360}}
