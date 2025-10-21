@@ -1,10 +1,17 @@
 import * as THREE from 'https://esm.sh/three@0.152.0';
+
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+
 renderer.setSize(innerWidth, innerHeight);
 renderer.setPixelRatio(devicePixelRatio);
-document.getElementById('galaxy').appendChild(renderer.domElement);
+renderer.domElement.style.display = 'block';      // ← force visible
+
+const galaxy = document.getElementById('galaxy');
+galaxy.style.width = '100vw';                     // ← give it size NOW
+galaxy.style.height = '100vh';
+galaxy.appendChild(renderer.domElement);
 
 const geo = new THREE.BufferGeometry();
 const positions = [];
